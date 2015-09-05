@@ -83,11 +83,12 @@
 /*
 	Selects one row from a table. Returns an array holding one line of results.
 */
-		function PDOselect_all_from_table_single_row($table_name
-														, $condition = null
-														, $operator = null
-														, $value_for_condition = null
-														, $db)
+		function PDOselect_all_from_table_single_row(
+			  $table_name
+			, $condition = null
+			, $operator = null
+			, $value_for_condition = null
+			, $db)
 		{
 		
 		 	$sql = "SELECT * FROM  {$table_name}
@@ -102,11 +103,12 @@
 	Select more than one records in a table. Conditional optional.
 	Returns all the results in a multidimensional array.
 */
-	function PDOselect_all_from_table_many_rows($table_name
-														, $condition = null
-														, $operator = null
-														, $value_for_condition = null
-														, $db)
+	function PDOselect_all_from_table_many_rows(
+		$table_name
+		, $condition = null
+		, $operator = null
+		, $value_for_condition = null
+		, $db)
 		{
 		
 		 	$sql = "SELECT * FROM  {$table_name}
@@ -152,13 +154,16 @@ function PDOupdate($table_name, $columns_string, $new_values, $condition, $value
 	Checks whether all array values are empty.
 	$exceptions_arrays hold the array keys' values we do not want to check.
 */
-function check_all_fields_empty($fields_array, $exceptions_array = array()){
+function check_all_fields_empty($fields_array, $exceptions_array = array())
+{
 	$number_of_fields = count($fields_array);
-			foreach ($fields_array as $key => $value) {
-				if(empty($value) and !in_array($key, $exceptions_array)){
-					return false;
-			}
+	foreach ($fields_array as $key => $value)
+	 {
+		if(empty($value) and !in_array($key, $exceptions_array))
+		{
+			return false;
 		}
+	}
 		return true;
 }
 
