@@ -205,3 +205,18 @@ function suffix_plural($counter, $word)
 		$cleaned_url = strtolower(str_replace($search, $replace, $url));
 		return $cleaned_url;
 	}
+
+/*
+	Make an exceprt from a post, i.e. display a limited number 
+	of chars with a "read more" link to the full article.	
+*/
+function excerpt($text , $num_words_to_leave , $url_for_read_more ) 
+	{
+		$text_array = explode(' ',$text, $num_words_to_leave); 
+		$last_word = end($text_array); // Fetch the last word.
+		// Replace the last word with a "Read more" link.
+		$text_array_last_word_replaced = str_replace($last_word, '... <a href="'.$url_for_read_more.'">Read More</a>', $text_array);
+		// Turn the edited array into string.
+		$excerpt =  implode($text_array_last_word_replaced, ' '); 
+		return $excerpt;
+	}
