@@ -220,3 +220,12 @@ function excerpt($text , $num_words_to_leave , $url_for_read_more )
 		$excerpt =  implode($text_array_last_word_replaced, ' '); 
 		return $excerpt;
 	}
+function pagination($posts_in_total, $posts_per_page)
+	{
+	 
+	 $num_pages = floor($posts_in_total / $posts_per_page);
+	 $current_page = filter_input(INPUT_GET, 'page', FILTER_SANITIZE_NUMBER_INT);
+	 $current_num = ($current_page * $posts_per_page) - 5;
+	 $limit =  $current_num.' , '.$posts_per_page;
+	 return [$limit, $num_pages];
+	}
